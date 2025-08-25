@@ -21,29 +21,56 @@
 // createFlight('Fleith747');
 // createFlight('BDIE73', 'Tesing748');
 
-const flight = 'BIDE656';
-const jafary = {
-  name: 'Jafary Mdegela',
-  passport: '8587373793i',
-};
+// const flight = 'BIDE656';
+// const jafary = {
+//   name: 'Jafary Mdegela',
+//   passport: '8587373793i',
+// };
 
-const checkIn = function (flightNum, passenger) {
-  flightNum = 'LHERY636';
-  passenger.name = 'Mr' + passenger.name;
-  if (passenger.passport == '8587373793i') {
-    alert('Check in');
-  } else {
-    alert('Wrong passport');
-  }
-};
+// const checkIn = function (flightNum, passenger) {
+//   flightNum = 'LHERY636';
+//   passenger.name = 'Mr' + passenger.name;
+//   if (passenger.passport == '8587373793i') {
+//     alert('Check in');
+//   } else {
+//     alert('Wrong passport');
+//   }
+// };
 
+// // checkIn(flight, jafary);
+// console.log(flight);
+// console.log(jafary);
+
+// const newPassport = function (person) {
+//   person.passport = Math.trunc(Math.random() * 1000000);
+// };
+
+// newPassport(jafary);
 // checkIn(flight, jafary);
-console.log(flight);
-console.log(jafary);
 
-const newPassport = function (person) {
-  person.passport = Math.trunc(Math.random() * 1000000);
+const oneWord = function (str) {
+  return str.replace(/ /g, '').toLowerCase();
 };
 
-newPassport(jafary);
-checkIn(flight, jafary);
+const upperFirstWord = function (str) {
+  const [first, ...otherWords] = str.split(' ');
+  return [first.toUpperCase(), ...otherWords].join(' ');
+};
+
+// Higher Order function
+const transformer = function (str, fn) {
+  console.log(`Original String ${str}`);
+  console.log(`Transformed string ${fn(str)}`);
+  console.log(`Transformed method ${fn.name}`);
+};
+
+transformer('Javascript is the best', upperFirstWord);
+transformer('Javascript is the best', oneWord);
+
+// Javascript using call back all the time
+
+const high5 = function () {
+  console.log('Hi there');
+};
+
+document.body.addEventListener('click', high5);
