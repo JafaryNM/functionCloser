@@ -77,19 +77,70 @@
 
 // Function return function
 
-const greet = function (greeting) {
-  return function (name) {
-    console.log(`${greeting} , ${name}`);
-  };
+// const greet = function (greeting) {
+//   return function (name) {
+//     console.log(`${greeting} , ${name}`);
+//   };
+// };
+
+// greet('Hellow')('Mosses');
+// const greaterHey = greet('Hey');
+// greaterHey('Jonas');
+// greaterHey('Jafary');
+``;
+// // Change in arrow function
+
+// const greetArr = greeting => name => console.log(`${greeting}, ${name}`);
+
+// greetArr('JaffaryArrow')('Testing');
+
+const airTanzaniaMagufuli = {
+  airline: 'Air Tanzania Magufuli',
+  airCode: 'LHB56',
+  bookings: [],
+  // book: function () {},
+  book(flightNum, name) {
+    console.log(
+      ` ${name} book a seat on ${this.airline} flight with aircode ${this.airCode}, flight ${flightNum}`
+    );
+    this.bookings.push({ flight: `${this.airCode}${(this.flightNum, name)}` });
+  },
 };
 
-greet('Hellow')('Mosses');
-const greaterHey = greet('Hey');
-greaterHey('Jonas');
-greaterHey('Jafary');
+// Console Maguruli airline
 
-// Change in arrow function
+airTanzaniaMagufuli.book(4949, 'Air Tanzania 7575');
 
-const greetArr = greeting => name => console.log(`${greeting}, ${name}`);
+const airTanzaniaSamia = {
+  airline: 'Air Tanzania Samia',
+  airCode: 'LHB78',
+  bookings: [],
+};
 
-greetArr('JaffaryArrow')('Testing');
+// Create new function
+
+const book = airTanzaniaMagufuli.book;
+// But this do not work return undefined values
+// book(4747, 'Air Tanzna');
+
+const airTanzaniaNoPresident = {
+  airline: 'Air Tanzania Non Presidential',
+  airCode: 'LIF',
+  bookings: [],
+};
+
+// Solving by calling method
+
+book.call(airTanzaniaSamia, 59595, 'Air Samia 2025');
+book.call(airTanzaniaMagufuli, 8575, 'Air Magufuli7575');
+book.call(airTanzaniaNoPresident, 8075, 'Air NoPresidential ');
+console.log(airTanzaniaSamia);
+console.log(airTanzaniaMagufuli);
+console.log(airTanzaniaNoPresident);
+
+// Solving by apply
+
+const flightData = [58558, 'Air Samia 48848'];
+book.apply(airTanzaniaSamia, flightData);
+book.call(airTanzaniaSamia, ...flightData);
+console.log('air Samia Apply', airTanzaniaSamia);
