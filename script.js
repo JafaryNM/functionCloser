@@ -144,3 +144,33 @@ const flightData = [58558, 'Air Samia 48848'];
 book.apply(airTanzaniaSamia, flightData);
 book.call(airTanzaniaSamia, ...flightData);
 console.log('air Samia Apply', airTanzaniaSamia);
+
+//  Solving by bind method
+
+const airMagufuli = book.bind(airTanzaniaMagufuli);
+const airSamia = book.bind(airTanzaniaSamia);
+const airSamiaPresidential = book.bind(airTanzaniaSamia, 353);
+airSamia(47474, 'Air Samia Testing');
+airSamiaPresidential('Air Samia Presidential');
+airMagufuli(57557, 'Air Magufulie7558');
+
+// With event listners method
+
+airTanzaniaMagufuli.plane = 10;
+console.log(this);
+airTanzaniaMagufuli.buy = function () {
+  this.plane++;
+  console.log(this.plane);
+};
+
+document
+  .querySelector('.buy')
+  .addEventListener('click', airTanzaniaMagufuli.buyPlane);
+
+// Partial applications
+
+const addTax = (rate, value) => value + value * rate;
+console.log(addTax(0.5, 1000));
+const addVAT = addTax.bind(null, 0.23);
+console.log(addVAT(1000));
+// const addTax = (rate, value) => value + value * 0.23;
